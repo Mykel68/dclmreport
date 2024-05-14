@@ -210,7 +210,7 @@ const Index = () => {
             supervisor: " ",
             personnelCount: " ",
             volunteersCount: " ",
-            challenges: [],
+            challenges: [""],
             solution: " ",
             equipmentDetails: " ",
             remarks: " ",
@@ -255,7 +255,7 @@ const Index = () => {
           <fieldset className="grid items-center ">
             {serviceOptions.map((e) => {
               return (
-                <div className="">
+                <div key={e.service} className="">
                   <div key={e.service} className="bg-background">
                     <div className="p-1">
                       <input
@@ -277,6 +277,7 @@ const Index = () => {
                             <div
                               className="form-check"
                               style={{ marginLeft: "15px" }}
+                              key={e.subServiceName}
                             >
                               <input
                                 className="form-check-input"
@@ -296,7 +297,10 @@ const Index = () => {
                               e.subServiceName === formData.subService
                                 ? e.subServiceDay.map((e) => {
                                     return (
-                                      <div className="form-check">
+                                      <div
+                                        className="form-check"
+                                        key={e.subServiceDay}
+                                      >
                                         <input
                                           className="form-check-input"
                                           type="radio"

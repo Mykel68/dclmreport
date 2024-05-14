@@ -210,7 +210,7 @@ export default function Component() {
           <DialogHeader>
             <DialogTitle>Edit Report</DialogTitle>
             <DialogDescription>
-              Make changes to your Report here. Click save when you're done.
+              Make changes to your Report here. Click save when you are done.
             </DialogDescription>
           </DialogHeader>
           <ProfileForm report={selectedReport} onSave={handleSaveChanges} />
