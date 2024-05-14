@@ -11,17 +11,17 @@ const Sidebar = () => {
         <Image src={Logo} alt="logo" className=" w-1/6  mb-3 " />
         <h2 className="text-xl font-semibold  ">DCLM Report</h2>
       </div>
-      <ul className={styles.sidebar_menu}>
+      <ul className={`${styles.sidebar_menu}   `}>
         <li>
-          <Link href="/">
+          <Link href="/admin">
             <FiHome />
             Home
           </Link>
         </li>
         <li>
-          <Link href="/users">
+          <Link href="/admin/report">
             <FiUsers />
-            Users
+            Report
           </Link>
         </li>
         <li>
@@ -30,12 +30,12 @@ const Sidebar = () => {
             Settings
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link href="/logout">
             <FiLogOut />
             Logout
           </Link>
-        </li>
+        </li> */}
       </ul>
       <div className={styles.sidebar_footer}>
         <FiLogOut />

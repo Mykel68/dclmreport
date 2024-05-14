@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Banner from "@/components/Banner";
+import axios from "axios";
+import { toast } from "sonner";
 
 const Index = () => {
   const serviceOptions = [
@@ -189,8 +191,39 @@ const Index = () => {
     console.log(formData);
 
     if (validateForm()) {
-      // Proceed with form submission
-      // Your form submission logic here...
+      try {
+        const response = await axios.post(
+          `http://localhost:5001/api/submit-report`,
+          formData
+        );
+
+        if (response.status === 201) {
+          toast.success("Report submitted successfully");
+          // console.log(formData);
+          // Reset form data after submission as null
+          setFormData({
+            date: " ",
+            serviceType: " ",
+            subService: " ",
+            subServiceDay: " ",
+            section: " ",
+            supervisor: " ",
+            personnelCount: " ",
+            volunteersCount: " ",
+            challenges: [],
+            solution: " ",
+            equipmentDetails: " ",
+            remarks: " ",
+            location: " ",
+          });
+        } else {
+          console.error("Error submitting report");
+          toast.error("Error submitting report. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
     } else {
       // Form validation failed
       console.log("Form validation failed");
