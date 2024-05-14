@@ -47,7 +47,7 @@ export default function Component() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5001/api/fetch-reports/"
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/fetch-reports/`
         );
         if (response.status === 200 && Array.isArray(response.data)) {
           setReports(response.data.reverse());
@@ -65,7 +65,8 @@ export default function Component() {
     try {
       if (selectedReport) {
         await axios.delete(
-          `http://localhost:5001/api/delete-report/${selectedReport.id}`
+          `${process.env.NEXT_PUBLIC_BASE_URL}api/delete-report/` +
+            selectedReport.id
         );
         setReports(reports.filter((report) => report.id !== selectedReport.id));
         setSelectedReport(null);
@@ -104,7 +105,7 @@ export default function Component() {
           location: formData.location,
         };
         const response = await axios.put(
-          `http://localhost:5001/api/update-report/${selectedReport.id}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/update-report/${selectedReport.id}`,
           updatedReport
         );
         if (response.status === 200) {
